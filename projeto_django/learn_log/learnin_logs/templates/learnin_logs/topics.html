@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learnings Logs</title>
+</head>
+<body>
+    {% extends "learnin_logs/base.html" %}
+    {% block content %}
+    <p>Topics</p>
+    <ul> {% for topic in topics %}
+        <li>
+            {{topic}}
+            <a href="{% url 'topic' topic.id %}">{{ topic }}</a>
+        </li>
+        {% empty %}
+        <li>Nenhum tópico foi adicionado ainda</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'new_topic' %}">Adicionar Topico</a>
+    {% endblock content %}
+</body>
+</html>

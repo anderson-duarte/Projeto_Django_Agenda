@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learnings Logs</title>
+</head>
+<body>
+    {% extends "learnin_logs/base.html" %}
+    {% block content %}
+    <p>Topics:{{topic}}</p>
+    <p>Entries:</p>
+    <p><a href="{% url 'new_entry' topic.id %}">Adicionar nova entrada</a></p>
+    <ul> {% for entry in entries %}
+        <li>
+            <p>{{entry.date_aded|date:'M d, Y H:i'}}</p>
+            <p>{{entry.text|linebreaks}}</p>
+            <p><a href="{% url 'edit_entry' entry.id %}">Altera Entrada</a></p>
+        </li>
+        {% empty %}
+        <li>Nenhum tópico foi adicionado ainda</li>
+        {% endfor %}
+    </ul>
+    {% endblock content %}
+</body>
+</html>

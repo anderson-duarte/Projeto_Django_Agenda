@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template Pai</title>
+</head>
+<body>
+    <p> <a href="{% url 'index' %}">Learning_Logs</a> -
+    <a href="{% url 'topics' %}">Topics</a></p>
+    {% if user.is_authenticated%}
+    Olá, {{user.username }}
+    {% else %}
+    <p><a href="{% url 'login' %}">Entrar</a></p>
+    {% endif %}
+    {% block content %}{% endblock content %}
+
+</body>
+</html>
